@@ -1,11 +1,36 @@
 import { Tabs } from "expo-router";
-import Ionicons from '@expo/vector-icons/Ionicons';
+import Iconicons from '@expo/vector-icons/Ionicons';
+import { NativeTabs, Icon, Label } from 'expo-router/unstable-native-tabs';
+import Ionicons from "@expo/vector-icons/Ionicons";
+
 
 export default function TabsLayout(){
+    const isGlass= false;
+
+    if (isGlass) {
     return (
-        <Tabs
+    <NativeTabs>
+      <NativeTabs.Trigger name="chats">
+        <Label>Chat</Label>
+        <Icon sf="message.fill" drawable="custom_android_drawable" />
+      </NativeTabs.Trigger>
+      
+      <NativeTabs.Trigger name="settings">
+        <Icon sf="gear" drawable="custom_settings_drawable" />
+        <Label>Settings</Label>
+      </NativeTabs.Trigger>
+
+        <NativeTabs.Trigger name="search" role="search">
+            <Label>Search</Label>
+        </NativeTabs.Trigger>
+
+    </NativeTabs>
+    );
+}
+
+    return         <Tabs
             screenOptions={{
-                tabBarActiveTintColor: "yellow",
+                tabBarActiveTintColor: "red",
                 headerShown: false,
             }}
         >
@@ -39,5 +64,5 @@ export default function TabsLayout(){
                 }}
             />
         </Tabs>
-    );
+    
 }
